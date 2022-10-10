@@ -1,17 +1,17 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
 
-const Noticia = () => {
+const Noticia = ({noticia}) => {
     return (
         <Col  className="mt-4" sm={12} md={4} lg={3}>
             <Card>
                 <Card.Body>
-                <Card.Img></Card.Img>
-                <Card.Title>Noticia Tilulo</Card.Title>
+                <Card.Img>{noticia.image_url}</Card.Img>
+                <Card.Title>{noticia.title}</Card.Title>
                 <Card.Text>
-                    Noticia parrafo
+                    {noticia.description}
                 </Card.Text>
-                <Button>Mas info</Button>
+                <Button>{noticia.link}</Button>
                 </Card.Body>
             </Card>
         </Col>
