@@ -1,3 +1,12 @@
-### React noticias
+# React web-noticias
 
-# 09bdaa070d3748c09e1d974428938c75
+### Librerias
+- React-bootstrap
+
+### API 
+
+- https://newsapi.org/
+
+### Author
+
+- Alvaro Ruiz Mejia
