@@ -5,10 +5,10 @@ import Noticia from "./Noticia";
 const ListaNoticias = (props) => {
   return (
     <Row>
-      {props.noticia.map((noticia, posicion) => {
+      {props.noticia.map((noticia, posicion) => (
         <Noticia key={posicion}
-        noticia={noticia}/>;
-      })}
+        noticia={noticia}/>
+        ))}
     </Row>
   );
 };

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import ListaNoticias from "./ListaNoticias";
 
@@ -16,21 +17,16 @@ const Formulario = () => {
     }
   };
 
-  useEffect(() => {
-    consultarAPI();
-  });
-
   const consultarAPI = async () => {
     try {
       const respuesta = await fetch(
-        `https://newsdata.io/api/1/news?apikey=pub_12149c5ee2beaf5dc3ab74537f03b7c7a610b&category=${categoria}&country=${pais}`
-      );
-      console.log(respuesta);
+        `https://newsapi.org/v2/top-headlines?country=${pais}&category=${categoria}&apiKey=09bdaa070d3748c09e1d974428938c75`);
+        
       const dato = await respuesta.json();
-      console.log(dato);
-      setNotcia(dato[0]);
+      setNotcia(dato.articles);
+        // console.log(dato.articles)
     } catch (error) {
-      console.log(error);
+      alert("Complete los campos");
     }
   };
 
@@ -49,17 +45,13 @@ const Formulario = () => {
                 required
               >
                 <option>Selecciones una opcion</option>
-                <option value="business">business</option>
-                <option value="entertainment">entertainment</option>
-                <option value="environment">environment</option>
-                <option value="food">food</option>
-                <option value="health">health</option>
-                <option value="politics">politics</option>
-                <option value="science">science</option>
-                <option value="sports">sports</option>
-                <option value="technology">technology</option>
-                <option value="top">top</option>
-                <option value="world">world</option>
+                <option value="business">Negocio</option>
+                <option value="entertainment">Entretenimiento</option>
+                <option value="general">General</option>
+                <option value="health">Vida</option>
+                <option value="science">Ciencia</option>
+                <option value="sports">Deportes</option>
+                <option value="technology">Tecnologia</option>
               </Form.Select>
             </Col>
             <Col sm={12} md={6} lg={6} className="mt-3">
@@ -81,7 +73,7 @@ const Formulario = () => {
               </Form.Select>
             </Col>
           </Row>
-          <Button type="submit" onClick={consultarAPI} className="mt-3">
+          <Button type="submit" className="mt-3">
             Buscar
           </Button>
         </Form.Group>
